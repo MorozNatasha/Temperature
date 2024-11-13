@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конвертер температури</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="converter-container">
+        <h1>Конвертер температури</h1>
+        <form method="POST">
+            <label for="value">Введіть значення температури:</label>
+            <input type="number" step="any" name="value" id="value" required placeholder="Наприклад, 25">
+
+            <label for="from_unit">Виберіть одиницю температури:</label>
+            <select name="from_unit" id="from_unit">
+                <option value="celsius">Цельсій</option>
+                <option value="fahrenheit">Фаренгейт</option>
+                <option value="kelvin">Кельвін</option>
+            </select>
+
+            <label for="to_unit">Виберіть одиницю для конвертації:</label>
+            <select name="to_unit" id="to_unit">
+                <option value="celsius">Цельсій</option>
+                <option value="fahrenheit">Фаренгейт</option>
+                <option value="kelvin">Кельвін</option>
+            </select>
+
+            <button type="submit">Конвертувати</button>
+        </form>
+
+        {% if result is not none %}
+            <div class="result">Результат: {{ result }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
